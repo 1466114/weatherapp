@@ -2,17 +2,14 @@ import React, {useState} from 'react';
 import {Get} from './http';
 import timeFormat from './util';
 import './App.css';
-import Footer from './Footer';
 import Header from './Header';
 import Icon from './Icon';
 import Search from './Search';
 import Forecast from './Forecast';
-
 const keyApi = "25ade75d5d7f46f6bbf3bd04a072667b";
-
 export default function App() {
   const [weatherData, setWeatherData] = useState({ready:false});
-  const [city,setCity] = useState('汉中');
+  const [city,setCity] = useState('南昌');
   function changeDisplay() {
     gatherData();
   }
@@ -41,9 +38,7 @@ export default function App() {
       let weather = `https://devapi.qweather.com/v7/weather/3d?location=${cityid}&key=${keyApi}`;
       let now = `https://devapi.qweather.com/v7/weather/now?location=${cityid}&key=${keyApi}`;
       Promise.all([Get(weather),Get(now)]).then(handleResponse);
-      // Get(weather).then(handleResponse);
     })
-    // 需要location的id，获取天气信息
   }
   if(weatherData.ready){
     return (
@@ -57,7 +52,6 @@ export default function App() {
             onHandleChange={updateCity} />
           <Forecast data={weatherData.futherWeather} />
         </div>
-        <Footer />
       </div>
     );
   } else {

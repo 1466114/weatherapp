@@ -13,7 +13,7 @@ body{
   flex-direction: column;
   margin:0 auto;
   text-align:center;
-  width:480px;
+  width:100%;
   max-width:480px;
   font-size:14px;
   font-family: '微软雅黑';
